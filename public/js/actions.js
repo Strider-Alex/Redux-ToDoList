@@ -1,3 +1,7 @@
+/**
+ * action index
+ */
+let actionIndex = 0;
 
 /**
  * action types
@@ -22,14 +26,15 @@ export const VisibilityFilters = {
 export const addTodo = (text)=>{
     return {
         type: ADD_TODO,
+        id: actionIndex++,
         text
     };
 };
 
-export const toggleTodo = (index)=>{
+export const toggleTodo = (id)=>{
     return {
         type: TOGGLE_TODO,
-        index
+        id
     };
 };
 

@@ -1,4 +1,4 @@
-import {combineReducers} from 'react-redux';
+import {combineReducers} from 'redux';
 import {
     ADD_TODO,
     TOGGLE_TODO,
@@ -23,13 +23,14 @@ const todos = (state = [],action)=>{
             return [
                 ...state,
                 {
+                    id: action.id,
                     text: action.text,
                     completed:false
                 }
             ];
         case TOGGLE_TODO:
-            return state.map((todo,index)=>{
-                if(index === action.index){
+            return state.map((todo,id)=>{
+                if(id === action.id){
                     return Object.assign({}, todo, {
                         completed: !todo.completed
                     });

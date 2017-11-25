@@ -3,11 +3,17 @@
  */
 let path = require("path");
 module.exports = {
-    entry: {
-        actions: "./public/js/actions.js"
-    },
+    entry: "./public/js/index.js",
     output: {
         path: __dirname + "/public/build",
         filename: "[name].bundle.js"
+    },
+    resolve: {
+        extensions: ['.js', '.jsx']
+    },
+    module: {
+        loaders: [
+            { test: /\.js|jsx$/, loaders: ['babel-loader'], exclude: /node_modules/ }
+        ]
     }
 };

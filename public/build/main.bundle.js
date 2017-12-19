@@ -21308,6 +21308,10 @@ var _VisibleTodoList = __webpack_require__(76);
 
 var _VisibleTodoList2 = _interopRequireDefault(_VisibleTodoList);
 
+var _SVGTitle = __webpack_require__(79);
+
+var _SVGTitle2 = _interopRequireDefault(_SVGTitle);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -21319,18 +21323,51 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var App = function (_React$Component) {
     _inherits(App, _React$Component);
 
-    function App() {
+    function App(props) {
         _classCallCheck(this, App);
 
-        return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
+        var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
+
+        _this.keyframes = ['@keyframes dash {\n            from {\n              stroke-dashoffset: 1000;\n            }\n            to {\n              stroke-dashoffset: 0;\n            }\n          }', '@keyframes fadein {\n            from { opacity: 0; }\n            to   { opacity: 1; }\n          }\n          '];
+        return _this;
     }
 
     _createClass(App, [{
+        key: 'componentWillMount',
+        value: function componentWillMount() {
+            var styleSheet = document.styleSheets[0];
+            var _iteratorNormalCompletion = true;
+            var _didIteratorError = false;
+            var _iteratorError = undefined;
+
+            try {
+                for (var _iterator = this.keyframes[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                    var rule = _step.value;
+
+                    styleSheet.insertRule(rule, styleSheet.cssRules.length);
+                }
+            } catch (err) {
+                _didIteratorError = true;
+                _iteratorError = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion && _iterator.return) {
+                        _iterator.return();
+                    }
+                } finally {
+                    if (_didIteratorError) {
+                        throw _iteratorError;
+                    }
+                }
+            }
+        }
+    }, {
         key: 'render',
         value: function render() {
             return _react2.default.createElement(
                 'div',
-                null,
+                { style: styles.container },
+                _react2.default.createElement(_SVGTitle2.default, null),
                 _react2.default.createElement(_AddTodo2.default, null),
                 _react2.default.createElement(_VisibleTodoList2.default, null),
                 _react2.default.createElement(_Footer2.default, null)
@@ -21342,6 +21379,13 @@ var App = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = App;
+
+
+var styles = {
+    container: {
+        marginHorizontal: "20%"
+    }
+};
 
 /***/ }),
 /* 72 */
@@ -21579,7 +21623,7 @@ var AddToDo = function (_React$Component) {
             var input = void 0;
             return _react2.default.createElement(
                 'div',
-                null,
+                { style: styles.item },
                 _react2.default.createElement(
                     'form',
                     {
@@ -21609,6 +21653,14 @@ var AddToDo = function (_React$Component) {
 
     return AddToDo;
 }(_react2.default.Component);
+
+var styles = {
+    item: {
+        opacity: 0,
+        animation: "fadein ease 1s forwards",
+        animationDelay: "2s"
+    }
+};
 
 var AddTodo = (0, _reactRedux.connect)()(AddToDo);
 
@@ -21814,6 +21866,72 @@ Todo.propTypes = {
     onClick: _propTypes2.default.func.isRequired,
     completed: _propTypes2.default.bool.isRequired,
     text: _propTypes2.default.string.isRequired
+};
+
+/***/ }),
+/* 79 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var SVGTitle = function (_React$Component) {
+    _inherits(SVGTitle, _React$Component);
+
+    function SVGTitle(props) {
+        _classCallCheck(this, SVGTitle);
+
+        var _this = _possibleConstructorReturn(this, (SVGTitle.__proto__ || Object.getPrototypeOf(SVGTitle)).call(this, props));
+
+        _this.path = 'M3.5,175V19c0,0,1-8.75,8.25-11.5S26.5,8,26.5,8l54,53.25\n          c0,0,7,8.25,14.5,0.75s51.5-52.25,51.5-52.25s9.75-7,18-2s7.75,11.5,7.75,11.5\n          v104c0,0-0.5,15.75-15.25,15.75s-15.75-15-15.75-15V68.5c0,0-0.125-9.125-6-3.25\n          s-36.25,36-36.25,36s-11.625,11.875-24-0.5S40.25,65.5,40.25,65.5\n          s-5.75-5.25-5.75,2s0,107.25,0,107.25s-0.75,13.5-14.5,13.5S3.5,175,3.5,175z';
+        return _this;
+    }
+
+    _createClass(SVGTitle, [{
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'div',
+                { style: { position: 'relative', height: 200, width: 200, margin: '40px auto' } },
+                _react2.default.createElement(
+                    'svg',
+                    { width: '200', height: '200' },
+                    _react2.default.createElement('path', { style: styles.path, d: this.path, fill: '#FFFFFF', stroke: 'rgba(1, 155, 240, 0.2)', strokeWidth: '4', strokeMiterlimit: '10' })
+                )
+            );
+        }
+    }]);
+
+    return SVGTitle;
+}(_react2.default.Component);
+
+exports.default = SVGTitle;
+
+
+var styles = {
+    path: {
+        strokeDasharray: 1000,
+        strokeDashoffset: 1000,
+        animation: "dash 2s linear forwards"
+    }
 };
 
 /***/ })

@@ -6,8 +6,8 @@ class AddToDo extends React.Component{
     render(){
         let input;
         return(
-        <div>
-            <form
+        <div style={styles.item}>
+            <form 
                 onSubmit={e => {
                     e.preventDefault();
                     if (!input.value.trim()) {
@@ -31,6 +31,15 @@ class AddToDo extends React.Component{
     }
 }
 
+const styles={
+    item:{
+        opacity:0,
+        animation: "fadein ease 1s forwards",
+        animationDelay: "2s"
+    }
+}
+
 const AddTodo = connect()(AddToDo);
+
 
 export default AddTodo;

@@ -7,19 +7,21 @@ import SVGTitle from './SVGTitle'
 export default class App extends React.Component{
     constructor(props) {
         super(props);
-        this.keyframes = [`@keyframes dash {
-            from {
-              stroke-dashoffset: 1000;
-            }
-            to {
-              stroke-dashoffset: 0;
-            }
-          }`
-          ,`@keyframes fadein {
-            from { opacity: 0; }
-            to   { opacity: 1; }
-          }
-          `];
+        this.keyframes = [
+            `@keyframes dash {
+                to {
+                    stroke-dashoffset: 0;
+                }
+            }`,
+            `@keyframes fadein {
+                from { opacity: 0; }
+                to   { opacity: 1; }
+            }`,
+            `@keyframes fillfadein {
+                from { fill-opacity: 0; }
+                to   { fill-opacity: 1; }
+            }`,
+        ];
     }
     componentWillMount(){
         let styleSheet=document.styleSheets[0];

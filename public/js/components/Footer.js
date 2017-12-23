@@ -4,7 +4,7 @@ import FilterLink from '../containers/FilterLink';
 export default class Footer extends React.Component{
     render(){
         return(
-        <p>
+        <p style={styles.container}>
             Show:
             {' '}
             <FilterLink filter="SHOW_ALL">
@@ -22,3 +22,11 @@ export default class Footer extends React.Component{
         );
     }
 }
+
+const styles={
+    container:{
+          opacity:0,
+          animation: "fadein ease 1s forwards",
+          animationDelay: "3s"
+      }
+  }

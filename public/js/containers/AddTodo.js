@@ -6,7 +6,7 @@ class AddToDo extends React.Component{
     render(){
         let input;
         return(
-        <div style={styles.item}>
+        <div style={styles.container}>
             <form 
                 onSubmit={e => {
                     e.preventDefault();
@@ -32,7 +32,7 @@ class AddToDo extends React.Component{
 }
 
 const styles={
-    item:{
+  container:{
         opacity:0,
         animation: "fadein ease 1s forwards",
         animationDelay: "2s"

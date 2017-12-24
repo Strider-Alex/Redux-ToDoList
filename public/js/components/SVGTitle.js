@@ -1,5 +1,6 @@
 import React from 'react';
-import {Motion,spring} from 'react-motion';
+import { Animate } from 'react-move';
+import { easeQuadInOut } from 'd3-ease';
 
 export default class SVGTitle extends React.Component{
     constructor(props) {
@@ -12,16 +13,24 @@ export default class SVGTitle extends React.Component{
     render(){
         return(
                 <div style={styles.container}>
-                    <Motion defaultStyle={{strokeDashoffset: 24000}} style={{strokeDashoffset: spring(0)}}>
-                        {interpolatingStyle=> 
+                    <Animate 
+                        start={{fillOpacity:0,strokeDashoffset:24000}}
+                        enter={
+                            [
+                                {strokeDashoffset:[0],timing: {duration: 2000, ease:easeQuadInOut}},
+                                {fillOpacity:[1],timing: {duration: 1000,delay:1200, ease:easeQuadInOut}}
+                            ]
+                        }
+                    >
+                        {(state)=>
                         <svg  viewBox="0 0 750.000000 750.000000">
                             <g transform="translate(0.000000,750.000000) scale(0.100000,-0.100000)" strokeWidth="60" strokeMiterlimit="10">
-                                <path style={{...styles.path,...interpolatingStyle}} d={this.path[0]} stroke="rgb(73,193,239)" fill="rgb(73,193,239)"/>
-                                <path style={{...styles.path,...interpolatingStyle}} d={this.path[1]} stroke="rgb(0,207,83)" fill="rgb(0,207,83)"/>
+                                <path style={{...state,...styles.path}} d={this.path[0]} stroke="rgb(73,193,239)" fill="rgb(73,193,239)"/>
+                                <path style={{...state,...styles.path}} d={this.path[1]} stroke="rgb(0,207,83)" fill="rgb(0,207,83)"/>
                             </g>
                         </svg>
                         }
-                    </Motion>
+                    </Animate>
                 </div>
         );
     }

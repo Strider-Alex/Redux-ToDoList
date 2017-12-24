@@ -2,13 +2,16 @@ import React from 'react'
 import Radium from 'radium'
 import { connect } from 'react-redux'
 import { addTodo } from '../actions'
+import FadeIn from '../components/FadeIn'
 
 @Radium
 class AddToDo extends React.Component{
     render(){
         let input;
         return(
-        <div style={styles.container}>
+        <FadeIn duration={500} delay={2000}>
+        { state=>
+        <div style={{...styles.container,...state}}>
             <form 
                 onSubmit={e => {
                     e.preventDefault();
@@ -25,11 +28,13 @@ class AddToDo extends React.Component{
                         input = node
                     }}
                 />
-                <button type="submit" style={styles.inputButton}>
+                <button key={`button-opacity${state.opacity}`} type="submit" style={styles.inputButton}>
                     Add Todo
                 </button>
             </form>
         </div>
+        }
+        </FadeIn>
         );
     }
 }
@@ -37,9 +42,8 @@ class AddToDo extends React.Component{
 const styles={
     container:{
         margin:"60px auto 0px auto",
+        position:"relative",
         width:500,
-        opacity:0,
-        animation: "fadein ease 0.5s forwards"
     },
     input:{
         width: "70%",

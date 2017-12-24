@@ -39,8 +39,7 @@ const styles={
         margin:"60px auto 0px auto",
         width:500,
         opacity:0,
-        animation: "fadein ease 1s forwards",
-        animationDelay: "2s"
+        animation: "fadein ease 0.5s forwards"
     },
     input:{
         width: "70%",

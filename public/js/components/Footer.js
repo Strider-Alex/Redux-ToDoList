@@ -24,7 +24,6 @@ const styles={
         width:500,
         margin:"15px auto",
         opacity:0,
-        animation: "fadein ease 1s forwards",
-        animationDelay: "3s"
+        animation: "fadein ease 0.5s forwards"
     }
   }

@@ -7,15 +7,27 @@ import PropTypes from 'prop-types';
 export default class Todo extends React.Component {
     render() {
         return (
-        <li 
+        <div 
             onClick={this.props.onClick}
             style={{
-                textDecoration: this.props.completed?'line-through':'none'
+                ...styles.list,
+                textDecoration: this.props.completed?'line-through':'none',
             }}
         >
             {this.props.text}
-        </li>
+        </div>
         );
+    }
+}
+
+const styles={
+    list:{
+        position:"relative",
+        backgroundColor:"white",
+        border:"1px solid #ccc",
+        borderRadius:"4px",
+        margin:"-1px 0",
+        padding:10
     }
 }
 

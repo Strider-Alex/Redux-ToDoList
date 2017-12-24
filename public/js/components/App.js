@@ -1,8 +1,10 @@
 import React from 'react'
+import Particles from 'react-particles-js';
 import Footer from './Footer'
 import AddTodo from '../containers/AddTodo'
 import VisibleTodoList from '../containers/VisibleTodoList'
 import SVGTitle from './SVGTitle'
+import particleParams from '../../settings/particles.json'
 
 export default class App extends React.Component{
     constructor(props) {
@@ -25,12 +27,15 @@ export default class App extends React.Component{
     }
     componentWillMount(){
         let styleSheet=document.styleSheets[0];
-        for(let rule of this.keyframes)
+        for(let rule of this.keyframes){
             styleSheet.insertRule(rule, styleSheet.cssRules.length);
+        }
+        console.log(particleParams);
     }
     render(){
         return(
-        <div style={styles.container}>
+        <div>
+            <Particles style={styles.particles} params={particleParams}/>
             <SVGTitle/>
             <AddTodo />
             <VisibleTodoList />
@@ -41,7 +46,9 @@ export default class App extends React.Component{
 }
 
 const styles = {
-    container:{
-        marginHorizontal:"20%"
+    particles:{
+        position:"fixed",
+        backgroundColor:"#faf2f3",
+        margin:0
     }
 };

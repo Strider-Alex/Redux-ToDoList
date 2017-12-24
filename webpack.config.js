@@ -12,8 +12,9 @@ module.exports = {
         extensions: ['.js', '.jsx']
     },
     module: {
-        loaders: [
-            { test: /\.js|jsx$/, loaders: ['babel-loader'], exclude: /node_modules/ }
+        rules: [
+            { test: /\.js|jsx$/, use: 'babel-loader', exclude: /node_modules/ },
+            { test: /\.json$/, use: 'json-loader'}
         ]
     }
 };

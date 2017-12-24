@@ -11,12 +11,12 @@ export default class SVGTitle extends React.Component{
     }
     render(){
         return(
-                <div style={{ position: 'relative', height: 200, width: 200, margin: '40px auto' }}>
-                    <svg viewBox="0 0 750.000000 750.000000" width="200" height="200">
-                    <g transform="translate(0.000000,750.000000) scale(0.100000,-0.100000)" strokeWidth="60" strokeMiterlimit="10">
-                        <path style={styles.path} d={this.path[0]} stroke="rgb(73,193,239)" fill="rgb(73,193,239)"/>
-                        <path style={styles.path} d={this.path[1]} stroke="rgb(0,207,83)" fill="rgb(0,207,83)"/>
-                    </g>
+                <div style={styles.container}>
+                    <svg  viewBox="0 0 750.000000 750.000000">
+                        <g transform="translate(0.000000,750.000000) scale(0.100000,-0.100000)" strokeWidth="60" strokeMiterlimit="10">
+                            <path style={styles.path} d={this.path[0]} stroke="rgb(73,193,239)" fill="rgb(73,193,239)"/>
+                            <path style={styles.path} d={this.path[1]} stroke="rgb(0,207,83)" fill="rgb(0,207,83)"/>
+                        </g>
                     </svg>
                 </div>
         );
@@ -24,6 +24,14 @@ export default class SVGTitle extends React.Component{
 }
 
 const styles={
+
+    container: { 
+        position: "relative", 
+        height: 200, 
+        width: 200,
+        paddingTop: 70,
+        margin:"auto"
+    },
     path: {
         strokeDasharray: 24000,
         strokeDashoffset: 24000,
@@ -33,11 +41,5 @@ const styles={
         animationDuration: "2s,0.7s",
         animationDelay: "0s,1.3s",
         fillOpacity:0
-    },
-    upper:{
-
-    },
-    lower:{
-
     }
 }

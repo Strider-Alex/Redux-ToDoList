@@ -8,12 +8,19 @@ import Todo from './Todo';
 export default class TodoList extends React.Component {
     render() {
         return(
-        <ul>
+        <div style={styles.container}>
             {this.props.todos.map((todo,id)=>(
                 <Todo key={id} {...todo} onClick={()=>this.props.onTodoClick(id)} />
             ))}
-        </ul>
+        </div>
         );
+    }
+}
+
+const styles={
+    container:{
+        width:500,
+        margin:"10px auto"
     }
 }
 

@@ -2,14 +2,14 @@ import React from 'react'
 import Radium from 'radium'
 import { connect } from 'react-redux'
 import { addTodo } from '../actions'
-import FadeIn from '../components/FadeIn'
+import FadeInOut from '../components/FadeInOut'
 
 @Radium
 class AddToDo extends React.Component{
     render(){
         let input;
         return(
-        <FadeIn duration={500} delay={2000}>
+        <FadeInOut duration={500} delay={2000}>
         { state=>
         <div style={{...styles.container,...state}}>
             <form 
@@ -34,7 +34,7 @@ class AddToDo extends React.Component{
             </form>
         </div>
         }
-        </FadeIn>
+        </FadeInOut>
         );
     }
 }

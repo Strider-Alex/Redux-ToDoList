@@ -24220,9 +24220,9 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _FadeIn = __webpack_require__(203);
+var _FadeInOut = __webpack_require__(204);
 
-var _FadeIn2 = _interopRequireDefault(_FadeIn);
+var _FadeInOut2 = _interopRequireDefault(_FadeInOut);
 
 var _FilterLink = __webpack_require__(93);
 
@@ -24249,7 +24249,7 @@ var Footer = function (_React$Component) {
         key: 'render',
         value: function render() {
             return _react2.default.createElement(
-                _FadeIn2.default,
+                _FadeInOut2.default,
                 { duration: 1000, delay: 2200 },
                 function (state) {
                     return _react2.default.createElement(
@@ -24411,7 +24411,7 @@ Link.propTypes = {
 
 var styles = {
     activeButton: {
-        width: "33%",
+        width: "33.33%",
         backgroundColor: "#46a5b9",
         color: "white",
         padding: "3px 10px",
@@ -27551,9 +27551,9 @@ var _reactRedux = __webpack_require__(9);
 
 var _actions = __webpack_require__(10);
 
-var _FadeIn = __webpack_require__(203);
+var _FadeInOut = __webpack_require__(204);
 
-var _FadeIn2 = _interopRequireDefault(_FadeIn);
+var _FadeInOut2 = _interopRequireDefault(_FadeInOut);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -27579,7 +27579,7 @@ var AddToDo = (0, _radium2.default)(_class = function (_React$Component) {
 
             var input = void 0;
             return _react2.default.createElement(
-                _FadeIn2.default,
+                _FadeInOut2.default,
                 { duration: 500, delay: 2000 },
                 function (state) {
                     return _react2.default.createElement(
@@ -27809,6 +27809,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _class;
+
 var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
@@ -27816,6 +27818,18 @@ var _react2 = _interopRequireDefault(_react);
 var _propTypes = __webpack_require__(2);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _radium = __webpack_require__(37);
+
+var _radium2 = _interopRequireDefault(_radium);
+
+var _CheckBox = __webpack_require__(205);
+
+var _CheckBox2 = _interopRequireDefault(_CheckBox);
+
+var _FadeInOut = __webpack_require__(204);
+
+var _FadeInOut2 = _interopRequireDefault(_FadeInOut);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -27828,7 +27842,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /**
  * Presentational Component
  */
-var Todo = function (_React$Component) {
+var Todo = (0, _radium2.default)(_class = function (_React$Component) {
     _inherits(Todo, _React$Component);
 
     function Todo() {
@@ -27840,21 +27854,39 @@ var Todo = function (_React$Component) {
     _createClass(Todo, [{
         key: 'render',
         value: function render() {
+            var _this2 = this;
+
             return _react2.default.createElement(
-                'div',
-                {
-                    onClick: this.props.onClick,
-                    style: _extends({}, styles.list, {
-                        textDecoration: this.props.completed ? 'line-through' : 'none'
-                    })
-                },
-                this.props.text
+                _FadeInOut2.default,
+                { delay: 0, duration: 500 },
+                function (state) {
+                    return _react2.default.createElement(
+                        'div',
+                        {
+                            key: 'div-opacity-' + state.opacity,
+                            onClick: _this2.props.onClick,
+                            style: _extends({}, state, styles.list, {
+                                textDecoration: _this2.props.completed ? 'line-through' : 'none'
+                            })
+                        },
+                        _react2.default.createElement(_CheckBox2.default, { checked: _this2.props.completed, duration: 400, checkBoxStyle: {
+                                size: 20,
+                                checkedColor: "#34b93d",
+                                unCheckedColor: "#b8b8b8"
+                            } }),
+                        _react2.default.createElement(
+                            'span',
+                            null,
+                            _this2.props.text
+                        )
+                    );
+                }
             );
         }
     }]);
 
     return Todo;
-}(_react2.default.Component);
+}(_react2.default.Component)) || _class;
 
 exports.default = Todo;
 
@@ -27866,7 +27898,10 @@ var styles = {
         border: "1px solid #ccc",
         borderRadius: "4px",
         margin: "-1px 0",
-        padding: 10
+        padding: 10,
+        ":hover": {
+            backgroundColor: "#f7f7f7"
+        }
     }
 };
 
@@ -30922,7 +30957,8 @@ var UPDATE = exports.UPDATE = 'UPDATE';
 var LEAVE = exports.LEAVE = 'LEAVE';
 
 /***/ }),
-/* 203 */
+/* 203 */,
+/* 204 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30955,39 +30991,225 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var FadeIn = function (_React$Component) {
-    _inherits(FadeIn, _React$Component);
+var FadeInOut = function (_React$Component) {
+    _inherits(FadeInOut, _React$Component);
 
-    function FadeIn() {
-        _classCallCheck(this, FadeIn);
+    function FadeInOut() {
+        _classCallCheck(this, FadeInOut);
 
-        return _possibleConstructorReturn(this, (FadeIn.__proto__ || Object.getPrototypeOf(FadeIn)).apply(this, arguments));
+        return _possibleConstructorReturn(this, (FadeInOut.__proto__ || Object.getPrototypeOf(FadeInOut)).apply(this, arguments));
     }
 
-    _createClass(FadeIn, [{
+    _createClass(FadeInOut, [{
         key: 'render',
         value: function render() {
             return _react2.default.createElement(
                 _reactMove.Animate,
                 {
                     start: { opacity: 0 },
-                    enter: { opacity: [1], timing: { duration: this.props.duration, delay: this.props.delay, ease: _d3Ease.easeQuadIn } }
+                    enter: { opacity: [1], timing: { duration: this.props.duration, delay: this.props.delay, ease: _d3Ease.easeQuadIn } },
+                    leave: { opacity: [0], timing: { duration: this.props.duration, delay: this.props.delay, ease: _d3Ease.easeQuadIn } }
                 },
                 this.props.children
             );
         }
     }]);
 
-    return FadeIn;
+    return FadeInOut;
 }(_react2.default.Component);
 
-exports.default = FadeIn;
+exports.default = FadeInOut;
 
 
-FadeIn.PropTypes = {
+FadeInOut.PropTypes = {
     children: _propTypes2.default.func.isRequired,
     duration: _propTypes2.default.number.isRequired,
     delay: _propTypes2.default.number.isRequired
+};
+
+/***/ }),
+/* 205 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = undefined;
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactMove = __webpack_require__(175);
+
+var _d3Ease = __webpack_require__(145);
+
+var _propTypes = __webpack_require__(2);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var CheckBox = function (_React$Component) {
+    _inherits(CheckBox, _React$Component);
+
+    function CheckBox() {
+        _classCallCheck(this, CheckBox);
+
+        return _possibleConstructorReturn(this, (CheckBox.__proto__ || Object.getPrototypeOf(CheckBox)).apply(this, arguments));
+    }
+
+    _createClass(CheckBox, [{
+        key: 'GetCheckBoxStyle',
+        value: function GetCheckBoxStyle() {
+            return {
+                height: this.props.checkBoxStyle.size,
+                width: this.props.checkBoxStyle.size,
+                backgroundColor: "transparent",
+                border: this.props.checkBoxStyle.size * 0.1 + ' solid ' + this.props.checkBoxStyle.unCheckedColor,
+                borderRadius: "5px",
+                borderStyle: "solid",
+                borderWidth: this.props.checkBoxStyle.size * 0.1,
+                position: "relative",
+                display: "inline-block",
+                boxSizing: "border-box",
+                cursor: "pointer"
+            };
+        }
+    }, {
+        key: 'GetAnimateStyle',
+        value: function GetAnimateStyle() {
+            if (this.props.checked) return {
+                borderColor: this.props.checkBoxStyle.checkedColor,
+                beforeHeight: this.props.checkBoxStyle.size * 1.2,
+                afterHeight: this.props.checkBoxStyle.size * 0.5
+            };else return {
+                borderColor: this.props.checkBoxStyle.unCheckedColor,
+                beforeHeight: 0,
+                afterHeight: 0
+            };
+        }
+    }, {
+        key: 'GetBeforeStyle',
+        value: function GetBeforeStyle() {
+            return {
+                boxSizing: "border-box",
+                position: "absolute",
+                width: this.props.checkBoxStyle.size * 0.2,
+                backgroundColor: this.props.checkBoxStyle.checkedColor,
+                display: "inline-block",
+                transformOrigin: "left top",
+                borderRadius: "5px",
+                top: this.props.checkBoxStyle.size * 0.72,
+                left: this.props.checkBoxStyle.size * 0.41,
+                //boxShadow: `0 0 0 ${this.props.checkBoxStyle.size * 0.05} ${this.props.checkBoxStyle.backgroundColor}`,
+                transform: "rotate(-135deg)"
+            };
+        }
+    }, {
+        key: 'GetAfterStyle',
+        value: function GetAfterStyle() {
+            return {
+                boxSizing: "border-box",
+                position: "absolute",
+                width: this.props.checkBoxStyle.size * 0.2,
+                backgroundColor: this.props.checkBoxStyle.checkedColor,
+                display: "inline-block",
+                transformOrigin: "left top",
+                borderRadius: "5px",
+                top: this.props.checkBoxStyle.size * 0.37,
+                left: this.props.checkBoxStyle.size * 0.05,
+                transform: "rotate(-45deg)"
+            };
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var _this2 = this;
+
+            return _react2.default.createElement(
+                _reactMove.Animate,
+                {
+                    start: this.GetAnimateStyle(),
+                    update: function update() {
+                        var style = _this2.GetAnimateStyle();
+                        if (_this2.props.checked) {
+                            return [{
+                                borderColor: [style.borderColor],
+                                timing: {
+                                    ease: _d3Ease.easeQuadIn,
+                                    duration: _this2.props.duration / 2
+                                }
+                            }, {
+                                beforeHeight: [style.beforeHeight],
+                                timing: {
+                                    ease: _d3Ease.easeQuadIn,
+                                    duration: _this2.props.duration / 2,
+                                    delay: _this2.props.duration / 2
+                                }
+                            }, {
+                                afterHeight: [style.afterHeight],
+                                timing: {
+                                    ease: _d3Ease.easeQuadIn,
+                                    duration: _this2.props.duration / 2
+                                }
+                            }];
+                        } else {
+                            return [{
+                                borderColor: [style.borderColor],
+                                timing: {
+                                    ease: _d3Ease.easeQuadIn,
+                                    duration: _this2.props.duration / 2
+                                }
+                            }, {
+                                beforeHeight: [style.beforeHeight],
+                                afterHeight: [style.afterHeight],
+                                timing: {
+                                    duration: 0
+                                }
+                            }];
+                        }
+                    }
+                },
+                function (state) {
+                    return _react2.default.createElement(
+                        'label',
+                        { style: _extends({}, _this2.GetCheckBoxStyle(), { borderColor: state.borderColor }) },
+                        _react2.default.createElement('div', { style: _extends({}, _this2.GetBeforeStyle(), { height: state.beforeHeight }) }),
+                        _react2.default.createElement('div', { style: _extends({}, _this2.GetAfterStyle(), { height: state.afterHeight }) })
+                    );
+                }
+            );
+        }
+    }]);
+
+    return CheckBox;
+}(_react2.default.Component);
+
+exports.default = CheckBox;
+
+
+CheckBox.PropTypes = {
+    checked: _propTypes2.default.bool.isRequired,
+    checkBoxStyle: _propTypes2.default.shape({
+        size: _propTypes2.default.number.isRequired,
+        unCheckedColor: _propTypes2.default.string.isRequired,
+        checkedColor: _propTypes2.default.string.isRequired
+    }),
+    duration: _propTypes2.default.number.isRequired
 };
 
 /***/ })

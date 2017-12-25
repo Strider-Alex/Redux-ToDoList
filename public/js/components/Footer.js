@@ -1,5 +1,5 @@
 import React from 'react';
-import FadeIn from './FadeIn';
+import FadeInOut from './FadeInOut';
 import FilterLink from '../containers/FilterLink';
 
 
@@ -7,7 +7,7 @@ export default class Footer extends React.Component{
     render(){
         return(
 
-        <FadeIn duration={1000} delay={2200}>
+        <FadeInOut duration={1000} delay={2200}>
             {state=>
             <div style={{...state,...styles.container}}>
                 <FilterLink filter="SHOW_ALL">
@@ -21,7 +21,7 @@ export default class Footer extends React.Component{
                 </FilterLink> 
             </div>
             }
-        </FadeIn>
+        </FadeInOut>
         );
     }
 }

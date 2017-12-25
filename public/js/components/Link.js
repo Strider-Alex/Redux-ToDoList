@@ -32,7 +32,7 @@ Link.propTypes = {
 
 const styles = {
     activeButton:{
-        width:"33%",
+        width:"33.33%",
         backgroundColor: "#46a5b9",
         color: "white",
         padding: "3px 10px",

@@ -17,7 +17,8 @@ export default class CheckBox extends React.Component {
             position: "relative",
             display: "inline-block",
             boxSizing: "border-box",
-            cursor:"pointer"
+            cursor:"pointer",
+            ...this.props.style
         }
     }
     GetAnimateStyle(){
@@ -135,5 +136,6 @@ CheckBox.PropTypes={
         unCheckedColor:PropTypes.string.isRequired,
         checkedColor:PropTypes.string.isRequired
     }),
-    duration: PropTypes.number.isRequired
+    duration: PropTypes.number.isRequired,
+    style: PropTypes.object
 }

@@ -47,12 +47,14 @@ const styles={
     },
     input:{
         width: "70%",
-        padding: "13px 20px",
+        padding: "13px 13px",
         margin: "4px 0",
         display: "inline-block",
         border: "1px solid #ccc",
         borderRadius: "4px 0px 0px 4px",
-        boxSizing: "border-box"
+        boxSizing: "border-box",
+        fontSize: "16px",
+        color: "grey"
     },
     inputButton:{
         width: "30%",
@@ -63,6 +65,7 @@ const styles={
         border: "none",
         borderRadius: "0px 4px 4px 0px",
         cursor: "pointer",
+        fontSize: "16px",
         ":hover":{
             backgroundColor:"#45a049"
         }

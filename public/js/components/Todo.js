@@ -22,12 +22,12 @@ export default class Todo extends React.Component {
                 textDecoration: this.props.completed?'line-through':'none',
             }}
         >
-            <CheckBox checked={this.props.completed} duration={400} checkBoxStyle={{
+            <CheckBox checked={this.props.completed} duration={400} style={styles.checkBox} checkBoxStyle={{
                 size:20,
                 checkedColor:"#34b93d",
                 unCheckedColor:"#b8b8b8"
             }}/>
-            <span>{this.props.text}</span>
+            <span style={styles.text}>{this.props.text}</span>
         </div>
         }
         </FadeInOut>
@@ -46,6 +46,15 @@ const styles={
         ":hover":{
             backgroundColor:"#f7f7f7"
         }
+    },
+    text:{
+        fontSize:"16px",
+        color:"grey",
+        marginLeft: 20,
+        verticalAlign:"middle"
+    },
+    checkBox:{
+        verticalAlign:"middle"
     }
 }
 
